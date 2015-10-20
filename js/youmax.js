@@ -288,11 +288,14 @@
 			playlistTitle = playlistArray[i].snippet.title;
 			playlistUploaded = playlistArray[i].snippet.publishedAt;
 			playlistThumbnail = playlistArray[i].snippet.thumbnails.medium.url;
+			playlistDescription = playlistArray[i].snippet.description;
 			//playlistThumbnail = playlistThumbnail.replace("hqdefault","mqdefault");
 			if((i+youmax_global_options.youmaxItemCount-zeroPlaylistCompensation)%youmaxColumns!=0)
-				$('#youmax-video-list-div').append('<div class="youmax-video-tnail-box" style="width:'+((100/youmaxColumns)-4)+'%;" id="'+playListId+'"><div class="youmax-video-tnail" style="filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src=\''+playlistThumbnail+'\', sizingMethod=\'scale\'); background-image:url(\''+playlistThumbnail+'\')"><div class="youmax-playlist-sidebar" id="youmax-playlist-sidebar-'+playListId+'"><span class="youmax-playlist-video-count"><b>'+playlistSize+'</b><br/>VIDEOS</span></div></div><span class="youmax-video-list-title">'+playlistTitle+'</span><br/><span class="youmax-video-list-views">'+getDateDiff(playlistUploaded)+' ago</span></div>');
+				clearStyle="";
 			else
-				$('#youmax-video-list-div').append('<div class="youmax-video-tnail-box" style="width:'+((100/youmaxColumns)-4)+'%; clear:both;" id="'+playListId+'"><div class="youmax-video-tnail" style="filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src=\''+playlistThumbnail+'\', sizingMethod=\'scale\'); background-image:url(\''+playlistThumbnail+'\')"><div class="youmax-playlist-sidebar" id="youmax-playlist-sidebar-'+playListId+'"><span class="youmax-playlist-video-count"><b>'+playlistSize+'</b><br/>VIDEOS</span></div></div><span class="youmax-video-list-title">'+playlistTitle+'</span><br/><span class="youmax-video-list-views">'+getDateDiff(playlistUploaded)+' ago</span></div>');
+				clearStyle="clear:both;";
+
+			$('#youmax-video-list-div').append('<div class="youmax-video-tnail-box" style="width:'+((100/youmaxColumns)-4)+'%;'+clearStyle+'" id="'+playListId+'"><div class="youmax-video-tnail" style="filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src=\''+playlistThumbnail+'\', sizingMethod=\'scale\'); background-image:url(\''+playlistThumbnail+'\')"><div class="youmax-playlist-sidebar" id="youmax-playlist-sidebar-'+playListId+'"><span class="youmax-playlist-video-count"><b>'+playlistSize+'</b><br/>VIDEOS</span></div></div><span class="youmax-video-list-title">'+playlistTitle+'</span><br/><span class="youmax-video-list-views">'+getDateDiff(playlistUploaded)+' ago</span><br/><span class="youmax-vide-list-description">'+playlistDescription+'</span></div>');
 
 		}
 
@@ -368,17 +371,19 @@
 			//videoDuration = uploadsArray[i].snippet.duration;
 			videoUploaded = uploadsArray[i].snippet.publishedAt;
 			videoThumbnail = uploadsArray[i].snippet.thumbnails.medium.url;
+			videoDescription = uploadsArray[i].snippet.description;
 			//videoThumbnail = videoThumbnail.replace("hqdefault","mqdefault");
 
 			videoIdArray.push(videoId);
 
 			//$('#youmax-video-list-div').append('<div class="youmax-video-tnail-box" style="width:'+((100/youmaxColumns)-4)+'%;" id="'+videoId+'"><div class="youmax-video-tnail" style="filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src=\''+videoThumbnail+'\', sizingMethod=\'scale\'); background-image:url(\''+videoThumbnail+'\')"><div class="youmax-duration">'+secondsToTime(videoDuration)+'</div></div><span class="youmax-video-list-title">'+videoTitle+'</span><br/><span class="youmax-video-list-views">'+getReadableNumber(videoViewCount)+' views | '+getDateDiff(videoUploaded)+' ago</span></div>');
 
-
 			if((i+youmax_global_options.youmaxItemCount)%youmaxColumns!=0)
-				$('#youmax-video-list-div').append('<div class="youmax-video-tnail-box" style="width:'+((100/youmaxColumns)-4)+'%;" id="'+videoId+'"><div class="youmax-video-tnail" style="filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src=\''+videoThumbnail+'\', sizingMethod=\'scale\'); background-image:url(\''+videoThumbnail+'\')"><div class="youmax-duration"></div></div><span class="youmax-video-list-title">'+videoTitle+'</span><br/><span class="youmax-video-list-views">'+getDateDiff(videoUploaded)+' ago</span></div>');
+				clearStyle="";
 			else
-				$('#youmax-video-list-div').append('<div class="youmax-video-tnail-box" style="width:'+((100/youmaxColumns)-4)+'%; clear:both;" id="'+videoId+'"><div class="youmax-video-tnail" style="filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src=\''+videoThumbnail+'\', sizingMethod=\'scale\'); background-image:url(\''+videoThumbnail+'\')"><div class="youmax-duration"></div></div><span class="youmax-video-list-title">'+videoTitle+'</span><br/><span class="youmax-video-list-views">'+getDateDiff(videoUploaded)+' ago</span></div>');
+				clearStyle="clear:both;";
+
+			$('#youmax-video-list-div').append('<div class="youmax-video-tnail-box" style="width:'+((100/youmaxColumns)-4)+'%;'+clearStyle+'" id="'+videoId+'"><div class="youmax-video-tnail" style="filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src=\''+videoThumbnail+'\', sizingMethod=\'scale\'); background-image:url(\''+videoThumbnail+'\')"><div class="youmax-duration"></div></div><span class="youmax-video-list-title">'+videoTitle+'</span><br/><span class="youmax-video-list-views">'+getDateDiff(videoUploaded)+' ago</span><br/><span class="youmax-vide-list-description">'+videoDescription+'</span></div>');
 
 		}
 
@@ -448,8 +453,6 @@
 			$videoThumbnail = $('#youmax-video-list-div #'+videoId);
 			$videoThumbnail.find('.youmax-video-list-views').prepend(videoViewCount+' views | ');
 			$videoThumbnail.find('.youmax-duration').append(videoDuration);
-			//$videoThumbnail.append('<div class="youmax-definition">'+videoDefinition+'</div>');
-
 		}
 	},
 

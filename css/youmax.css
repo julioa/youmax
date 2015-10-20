@@ -26,6 +26,8 @@
 
 .youmax-video-list-views {color:#555;padding:1% 10px; padding-bottom: 3%;display:inline-block;font-size:12px;  font-family: Arial;}
 
+.youmax-video-list-description {color:#555;padding:1% 10px; padding-bottom: 3%;display:inline-block;font-size:13px;  font-family: Arial;}
+
 .youmax-playlist-sidebar {background-color:rgba(0,0,0,0.8);float:right;max-width:50%;height:100%;color:white;text-align:center;width: 70px;}
 
 .youmax-playlist-video-count {	display:inline-block;margin:3%;margin-top:5%;height:20%;  margin-top: 55px; }
